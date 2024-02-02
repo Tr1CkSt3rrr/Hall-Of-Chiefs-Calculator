@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hall of Chiefs Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        input, button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hall of Chiefs Calculator</h1>
+
+    <h2>Stage 1 - City Construction</h2>
+
+    <label for="constructionPower">Power from Construction:</label>
+    <input type="number" id="constructionPower1">
+
+    <label for="researchPower">Power from Research:</label>
+    <input type="number" id="researchPower1">
+
+    <button onclick="calculatePoints(1)">Calculate Points</button>
+
+    <p id="result1"></p>
+
+    <h2>Stage 2 - Hero Development</h2>
+
+    <label for="mythicShards">Mythic Hero Shards:</label>
+    <input type="number" id="mythicShards">
+
+    <label for="epicShards">Epic Hero Shards:</label>
+    <input type="number" id="epicShards">
+
+    <label for="rareHeroShards">Rare Hero Shards:</label>
+    <input type="number" id="rareHeroShards">
+
+    <label for="meat">Gathered Meat:</label>
+    <input type="number" id="meat">
+
+    <label for="wood">Gathered Wood:</label>
+    <input type="number" id="wood">
+
+    <label for="coal">Gathered Coal:</label>
+    <input type="number" id="coal">
+
+    <label for="iron">Gathered Iron:</label>
+    <input type="number" id="iron">
+
+    <label for="luckyWheelCount">Play Lucky Wheel Time(s):</label>
+    <input type="number" id="luckyWheelCount">
+
+    <button onclick="calculatePoints(2)">Calculate Points</button>
+
+    <p id="result2"></p>
+
+    <!-- Added Section for Stage 3 - Train Troops -->
+    <h2>Stage 3 - Train Troops</h2>
+
+    <label for="troopsTrained">Troops Trained:</label>
+    <input type="number" id="troopsTrained">
+
+    <label for="troopLevel">Troop Level:</label>
+    <select id="troopLevel">
+        <option value="1">Level 1</option>
+        <option value="2">Level 2</option>
+        <option value="3">Level 3</option>
+        <option value="4">Level 4</option>
+        <option value="5">Level 5</option>
+        <option value="6">Level 6</option>
+        <option value="7">Level 7</option>
+        <option value="8">Level 8</option>
+        <option value="9">Level 9</option>
+        <option value="10">Level 10</option>
+    </select>
+
+    <button onclick="calculatePoints(3)">Calculate Points</button>
+
+    <p id="result3"></p>
+
+    <!-- Added Section for Stage 4 - Beast Slay -->
+    <h2>Stage 4 - Beast Slay</h2>
+
+    <label for="chiefStamina">Current Chief Stamina:</label>
+    <input type="number" id="chiefStamina">
+
+    <label for="staminaRestorations">Chief Stamina Restorations:</label>
+    <input type="number" id="staminaRestorations">
+
+    <button onclick="calculatePoints(4)">Calculate Points</button>
+
+    <p id="result4"></p>
+
+    <script>
+        function calculatePoints(stage) {
+            if (stage === 1) {
+                var constructionPower = parseFloat(document.getElementById('constructionPower1').value) || 0;
+                var researchPower = parseFloat(document.getElementById('researchPower1').value) || 0;
+
+                var constructionPoints = constructionPower * 30;
+                var researchPoints = researchPower * 30;
+
+                var totalPoints = constructionPoints + researchPoints;
+
+                document.getElementById('result1').innerHTML = 'Total Points for City Construction: ' + totalPoints;
+            } else if (stage === 2) {
+                var mythicShards = parseFloat(document.getElementById('mythicShards').value) || 0;
+                var epicShards = parseFloat(document.getElementById('epicShards').value) || 0;
+                var rareHeroShards = parseFloat(document.getElementById('rareHeroShards').value) || 0;
+                var meat = parseFloat(document.getElementById('meat').value) || 0;
+                var wood = parseFloat(document.getElementById('wood').value) || 0;
+                var coal = parseFloat(document.getElementById('coal').value) || 0;
+                var iron = parseFloat(document.getElementById('iron').value) || 0;
+                var luckyWheelCount = parseFloat(document.getElementById('luckyWheelCount').value) || 0;
+
+                var mythic
