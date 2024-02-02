@@ -35,7 +35,8 @@
         label {
             display: block;
             margin: 10px 0;
-            color: #777;
+            color: #333;
+            font-weight: bold;
         }
 
         input, select {
@@ -118,16 +119,16 @@
         <label for="rareShards">Rare Hero Shards:</label>
         <input type="number" id="rareShards">
 
-        <label for="meat">Gathered Meat:</label>
+        <label for="meat">Gathered Meat (50 units):</label>
         <input type="number" id="meat">
 
-        <label for="wood">Gathered Wood:</label>
+        <label for="wood">Gathered Wood (50 units):</label>
         <input type="number" id="wood">
 
-        <label for="coal">Gathered Coal:</label>
+        <label for="coal">Gathered Coal (10 units):</label>
         <input type="number" id="coal">
 
-        <label for="iron">Gathered Iron:</label>
+        <label for="iron">Gathered Iron (2 units):</label>
         <input type="number" id="iron">
 
         <label for="luckyWheelCount">Play Lucky Wheel Time(s):</label>
@@ -214,7 +215,7 @@
             var mythicPoints = mythicShards * 35000;
             var epicPoints = epicShards * 14000;
             var rarePoints = rareShards * 4000;
-            var gatheringPoints = (meat * 3) + (wood * 3) + (coal * 3) + (iron * 3);
+            var gatheringPoints = (meat === 50 ? 3 : 0) + (wood === 50 ? 3 : 0) + (coal === 10 ? 3 : 0) + (iron === 2 ? 3 : 0);
             var luckyWheelPoints = luckyWheelCount * 90000;
 
             var totalPoints2 = mythicPoints + epicPoints + rarePoints + gatheringPoints + luckyWheelPoints;
@@ -250,10 +251,10 @@
             var staminaRestorations = parseFloat(document.getElementById('staminaRestorations').value) || 0;
 
             // Calculate Chief Stamina Points
-            var chiefStaminaPoints = chiefStamina * 30000;
+            var chiefStaminaPoints = (chiefStamina / 10) * 30000;
 
             // Calculate Chief Stamina Restorations Points
-            var restorationPoints = staminaRestorations * 10 * 30000;
+            var restorationPoints = staminaRestorations * 30000;
 
             var totalPoints4 = chiefStaminaPoints + restorationPoints;
 
@@ -262,6 +263,9 @@
         }
 
         function calculateTotalPoints() {
+            // Call calculatePoints for each stage
+            calculatePoints();
+
             // Your total points calculation logic here
             var totalPoints = 0;
 
