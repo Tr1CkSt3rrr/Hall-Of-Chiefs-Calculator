@@ -35,8 +35,7 @@
         label {
             display: block;
             margin: 10px 0;
-            color: #333;
-            font-weight: bold;
+            color: #777;
         }
 
         input, select {
@@ -95,10 +94,10 @@
     <div class="section">
         <h2>Stage 1 - City Construction</h2>
 
-        <label for="constructionPower">Power from Construction:</label>
+        <label for="constructionPower1">Power from Construction:</label>
         <input type="number" id="constructionPower1">
 
-        <label for="researchPower">Power from Research:</label>
+        <label for="researchPower1">Power from Research:</label>
         <input type="number" id="researchPower1">
 
         <button onclick="calculatePoints()">Calculate Points</button>
@@ -119,16 +118,16 @@
         <label for="rareShards">Rare Hero Shards:</label>
         <input type="number" id="rareShards">
 
-        <label for="meat">Gathered Meat (50 units):</label>
+        <label for="meat">Gathered Meat:</label>
         <input type="number" id="meat">
 
-        <label for="wood">Gathered Wood (50 units):</label>
+        <label for="wood">Gathered Wood:</label>
         <input type="number" id="wood">
 
-        <label for="coal">Gathered Coal (10 units):</label>
+        <label for="coal">Gathered Coal:</label>
         <input type="number" id="coal">
 
-        <label for="iron">Gathered Iron (2 units):</label>
+        <label for="iron">Gathered Iron:</label>
         <input type="number" id="iron">
 
         <label for="luckyWheelCount">Play Lucky Wheel Time(s):</label>
@@ -212,10 +211,12 @@
             var iron = parseFloat(document.getElementById('iron').value) || 0;
             var luckyWheelCount = parseFloat(document.getElementById('luckyWheelCount').value) || 0;
 
+            // Calculate points for gathering
+            var gatheringPoints = (Math.floor(meat / 50) * 3) + (Math.floor(wood / 50) * 3) + (Math.floor(coal / 10) * 3) + (Math.floor(iron / 2) * 3);
+
             var mythicPoints = mythicShards * 35000;
             var epicPoints = epicShards * 14000;
             var rarePoints = rareShards * 4000;
-            var gatheringPoints = (meat >= 50 ? 3 : 0) + (wood >= 50 ? 3 : 0) + (coal >= 10 ? 3 : 0) + (iron >= 2 ? 3 : 0);
             var luckyWheelPoints = luckyWheelCount * 90000;
 
             var totalPoints2 = mythicPoints + epicPoints + rarePoints + gatheringPoints + luckyWheelPoints;
@@ -250,11 +251,11 @@
             var chiefStamina = parseFloat(document.getElementById('chiefStamina').value) || 0;
             var staminaRestorations = parseFloat(document.getElementById('staminaRestorations').value) || 0;
 
-            // Calculate Chief Stamina Points
-            var chiefStaminaPoints = (chiefStamina >= 10 ? chiefStamina : 0) * 30000;
+            // Calculate points for chief stamina
+            var chiefStaminaPoints = Math.floor(chiefStamina / 10) * 30000;
 
-            // Calculate Chief Stamina Restorations Points
-            var restorationPoints = (staminaRestorations >= 1 ? staminaRestorations * 30000 : 0);
+            // Calculate points for chief stamina restorations
+            var restorationPoints = Math.floor(staminaRestorations / 10) * 30000;
 
             var totalPoints4 = chiefStaminaPoints + restorationPoints;
 
