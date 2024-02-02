@@ -163,15 +163,24 @@
         <div id="result3" class="resultBox"></div>
     </div>
 
-    <!-- Stage 4 - Beast Slay -->
+    <!-- Stage 4 - Gather Resources -->
     <div class="section">
-        <h2 style="color: #9b59b6;">Stage 4 - Beast Slay</h2>
+        <h2 style="color: #9b59b6;">Stage 4 - Gather Resources</h2>
 
-        <label for="chiefStamina">Current Chief Stamina:</label>
-        <input type="number" id="chiefStamina">
+        <label for="meat">Gathered Meat:</label>
+        <input type="number" id="meatGathered">
 
-        <label for="staminaRestorations">Chief Stamina Restorations:</label>
-        <input type="number" id="staminaRestorations">
+        <label for="wood">Gathered Wood:</label>
+        <input type="number" id="woodGathered">
+
+        <label for="coal">Gathered Coal:</label>
+        <input type="number" id="coalGathered">
+
+        <label for="iron">Gathered Iron:</label>
+        <input type="number" id="ironGathered">
+
+        <label for="researchPower">Power from Research:</label>
+        <input type="number" id="researchPower4">
 
         <button onclick="calculatePoints()">Calculate Points</button>
 
@@ -246,19 +255,18 @@
             document.getElementById('result3').innerHTML = 'Total Points for Train Troops: ' + totalPoints3;
 
             // Stage 4 calculation
-            var chiefStamina = parseFloat(document.getElementById('chiefStamina').value) || 0;
-            var staminaRestorations = parseFloat(document.getElementById('staminaRestorations').value) || 0;
+            var meatGathered = parseFloat(document.getElementById('meatGathered').value) || 0;
+            var woodGathered = parseFloat(document.getElementById('woodGathered').value) || 0;
+            var coalGathered = parseFloat(document.getElementById('coalGathered').value) || 0;
+            var ironGathered = parseFloat(document.getElementById('ironGathered').value) || 0;
+            var researchPower = parseFloat(document.getElementById('researchPower4').value) || 0;
 
-            // Calculate Chief Stamina Points
-            var chiefStaminaPoints = Math.floor(chiefStamina / 10) * 30000;
-
-            // Calculate Chief Stamina Restorations Points
-            var restorationPoints = staminaRestorations * 30000;
-
-            var totalPoints4 = chiefStaminaPoints + restorationPoints;
+            var gatheringPoints4 = Math.floor(meatGathered / 50) * 3 + Math.floor(woodGathered / 50) * 3 + Math.floor(coalGathered / 10) * 3 + Math.floor(ironGathered / 2) * 3;
+            var researchPoints4 = researchPower * 45;
+            var totalPoints4 = gatheringPoints4 + researchPoints4;
 
             // Display the results for Stage 4
-            document.getElementById('result4').innerHTML = 'Total Points for Beast Slay: ' + totalPoints4;
+            document.getElementById('result4').innerHTML = 'Total Points for Gather Resources: ' + totalPoints4;
         }
 
         function calculateTotalPoints() {
