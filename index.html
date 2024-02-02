@@ -187,6 +187,30 @@
         <div id="result4" class="resultBox"></div>
     </div>
 
+    <!-- Stage 5 - Power Boost -->
+    <div class="section">
+        <h2 style="color: #3498db;">Stage 5 - Power Boost</h2>
+
+        <label for="heroGearEssence">Hero Gear Essence Stone:</label>
+        <input type="number" id="heroGearEssence">
+
+        <label for="widgetHeroGear">Widget Hero Exclusive Gear:</label>
+        <input type="number" id="widgetHeroGear">
+
+        <label for="powerConstruction">Power through Construction:</label>
+        <input type="number" id="powerConstruction">
+
+        <label for="powerResearch">Power through Research:</label>
+        <input type="number" id="powerResearch">
+
+        <label for="powerTroopTraining">Power through Training/Promoting Troops:</label>
+        <input type="number" id="powerTroopTraining">
+
+        <button onclick="calculatePoints()">Calculate Points</button>
+
+        <div id="result5" class="resultBox"></div>
+    </div>
+
     <!-- Total Points Button -->
     <button id="totalButton" onclick="calculateTotalPoints()">Calculate Total Points</button>
 
@@ -199,6 +223,7 @@
             document.getElementById('result2').innerHTML = '';
             document.getElementById('result3').innerHTML = '';
             document.getElementById('result4').innerHTML = '';
+            document.getElementById('result5').innerHTML = '';
 
             // Stage 1 calculation
             var constructionPower = parseFloat(document.getElementById('constructionPower1').value) || 0;
@@ -267,6 +292,18 @@
 
             // Display the results for Stage 4
             document.getElementById('result4').innerHTML = 'Total Points for Gather Resources: ' + totalPoints4;
+
+            // Stage 5 calculation
+            var heroGearEssence = parseFloat(document.getElementById('heroGearEssence').value) || 0;
+            var widgetHeroGear = parseFloat(document.getElementById('widgetHeroGear').value) || 0;
+            var powerConstruction = parseFloat(document.getElementById('powerConstruction').value) || 0;
+            var powerResearch = parseFloat(document.getElementById('powerResearch').value) || 0;
+            var powerTroopTraining = parseFloat(document.getElementById('powerTroopTraining').value) || 0;
+
+            var totalPoints5 = heroGearEssence * 50000 + widgetHeroGear * 100000 + powerConstruction * 30 + powerResearch * 30 + powerTroopTraining * 20;
+
+            // Display the results for Stage 5
+            document.getElementById('result5').innerHTML = 'Total Points for Power Boost: ' + totalPoints5;
         }
 
         function calculateTotalPoints() {
@@ -281,6 +318,7 @@
             totalPoints += parseFloat(document.getElementById('result2').innerText.split(':')[1]) || 0;
             totalPoints += parseFloat(document.getElementById('result3').innerText.split(':')[1]) || 0;
             totalPoints += parseFloat(document.getElementById('result4').innerText.split(':')[1]) || 0;
+            totalPoints += parseFloat(document.getElementById('result5').innerText.split(':')[1]) || 0;
 
             // Display the total points
             document.getElementById('totalResult').innerText = 'Total Points: ' + totalPoints;
