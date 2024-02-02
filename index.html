@@ -59,6 +59,10 @@
         #totalButton {
             background-color: #008CBA;
         }
+
+        .stageButton {
+            background-color: #007BFF;
+        }
     </style>
 </head>
 <body>
@@ -75,6 +79,7 @@
     <input type="number" id="researchPower1">
 
     <button onclick="calculatePoints(1)">Calculate Points</button>
+    <button class="stageButton" onclick="calculateStagePoints(1)">Calculate Stage Points</button>
 
     <p id="result1"></p>
 
@@ -106,6 +111,7 @@
     <input type="number" id="luckyWheelCount">
 
     <button onclick="calculatePoints(2)">Calculate Points</button>
+    <button class="stageButton" onclick="calculateStagePoints(2)">Calculate Stage Points</button>
 
     <p id="result2"></p>
 
@@ -130,6 +136,7 @@
     </select>
 
     <button onclick="calculatePoints(3)">Calculate Points</button>
+    <button class="stageButton" onclick="calculateStagePoints(3)">Calculate Stage Points</button>
 
     <p id="result3"></p>
 
@@ -143,6 +150,7 @@
     <input type="number" id="staminaRestorations">
 
     <button onclick="calculatePoints(4)">Calculate Points</button>
+    <button class="stageButton" onclick="calculateStagePoints(4)">Calculate Stage Points</button>
 
     <p id="result4"></p>
 
@@ -157,6 +165,31 @@
             // ...
 
             // You can copy the existing code for the individual stages here
+        }
+
+        function calculateStagePoints(stage) {
+            var totalPoints = 0;
+
+            // Add up the points from the selected stage
+            switch (stage) {
+                case 1:
+                    totalPoints += parseFloat(document.getElementById('result1').innerText.split(':')[1]) || 0;
+                    break;
+                case 2:
+                    totalPoints += parseFloat(document.getElementById('result2').innerText.split(':')[1]) || 0;
+                    break;
+                case 3:
+                    totalPoints += parseFloat(document.getElementById('result3').innerText.split(':')[1]) || 0;
+                    break;
+                case 4:
+                    totalPoints += parseFloat(document.getElementById('result4').innerText.split(':')[1]) || 0;
+                    break;
+                default:
+                    break;
+            }
+
+            // Display the points for the selected stage
+            alert('Points for Stage ' + stage + ': ' + totalPoints);
         }
 
         function calculateTotalPoints() {
