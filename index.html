@@ -6,82 +6,24 @@
     <title>Hall of Chiefs Calculator</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
             text-align: center;
             margin: 20px;
         }
 
-        h1 {
-            color: #333;
+        input, button {
+            margin: 5px;
         }
 
-        h2 {
-            color: #555;
-            margin-bottom: 15px;
-        }
-
-        .section {
-            margin: 20px auto;
-            max-width: 600px;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: left;
-        }
-
-        label {
-            display: block;
-            margin: 10px 0;
-            color: #777;
-        }
-
-        input, select {
-            width: calc(100% - 20px);
+        .stage {
+            margin: 20px;
             padding: 10px;
-            margin: 5px 0;
-            box-sizing: border-box;
             border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button {
-            background-color: #4caf50;
-            color: white;
-            padding: 15px;
-            margin-top: 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        p {
-            color: #333;
-            font-weight: bold;
-            font-size: 18px;
-            margin-top: 20px;
-        }
-
-        #totalButton {
-            background-color: #007bff;
-            margin-top: 30px;
-        }
-
-        #totalButton:hover {
-            background-color: #0056b3;
+            border-radius: 8px;
         }
 
         #totalResult {
-            font-size: 20px;
             font-weight: bold;
-            color: #007bff;
             margin-top: 20px;
         }
     </style>
@@ -90,8 +32,7 @@
 
     <h1>Hall of Chiefs Calculator</h1>
 
-    <!-- Stage 1 - City Construction -->
-    <div class="section">
+    <div class="stage" id="stage1">
         <h2>Stage 1 - City Construction</h2>
 
         <label for="constructionPower">Power from Construction:</label>
@@ -102,11 +43,10 @@
 
         <button onclick="calculatePoints()">Calculate Points</button>
 
-        <div id="result1" class="resultBox"></div>
+        <p id="result1"></p>
     </div>
 
-    <!-- Stage 2 - Hero Development -->
-    <div class="section">
+    <div class="stage" id="stage2">
         <h2>Stage 2 - Hero Development</h2>
 
         <label for="mythicShards">Mythic Hero Shards:</label>
@@ -130,21 +70,21 @@
         <label for="iron">Gathered Iron:</label>
         <input type="number" id="iron">
 
-        <label for="luckyWheelCount">Play Lucky Wheel Time(s):</label>
+        <label for="luckyWheelCount">Play Lucky Wheel:</label>
         <input type="number" id="luckyWheelCount">
 
         <button onclick="calculatePoints()">Calculate Points</button>
 
-        <div id="result2" class="resultBox"></div>
+        <p id="result2"></p>
     </div>
 
-    <!-- Stage 3 - Train Troops -->
-    <div class="section">
+    <div class="stage" id="stage3">
         <h2>Stage 3 - Train Troops</h2>
 
         <label for="troopsTrained">Troops Trained:</label>
         <input type="number" id="troopsTrained">
 
+        <label for="troopLevel">Troop Level:</label>
         <select id="troopLevel">
             <option value="1">Level 1</option>
             <option value="2">Level 2</option>
@@ -160,11 +100,10 @@
 
         <button onclick="calculatePoints()">Calculate Points</button>
 
-        <div id="result3" class="resultBox"></div>
+        <p id="result3"></p>
     </div>
 
-    <!-- Stage 4 - Beast Slay -->
-    <div class="section">
+    <div class="stage" id="stage4">
         <h2>Stage 4 - Beast Slay</h2>
 
         <label for="chiefStamina">Current Chief Stamina:</label>
@@ -175,12 +114,10 @@
 
         <button onclick="calculatePoints()">Calculate Points</button>
 
-        <div id="result4" class="resultBox"></div>
+        <p id="result4"></p>
     </div>
 
-    <!-- Total Points Button -->
-    <button id="totalButton" onclick="calculateTotalPoints()">Calculate Total Points</button>
-
+    <button onclick="calculateTotalPoints()">Calculate Total Points</button>
     <p id="totalResult"></p>
 
     <script>
@@ -248,15 +185,23 @@
             // Stage 4 calculation
             var chiefStamina = parseFloat(document.getElementById('chiefStamina').value) || 0;
             var staminaRestorations = parseFloat(document.getElementById('staminaRestorations').value) || 0;
-            var beastSlayPoints = (chiefStamina * 30000) + (staminaRestorations * 10 * 30000);
 
-            var totalPoints4 = beastSlayPoints;
+            // Calculate Chief Stamina Points
+            var chiefStaminaPoints = (chiefStamina / 10) * 30000;
+
+            // Calculate Chief Stamina Restorations Points
+            var restorationPoints = staminaRestorations * 30000;
+
+            var totalPoints4 = chiefStaminaPoints + restorationPoints;
 
             // Display the results for Stage 4
             document.getElementById('result4').innerHTML = 'Total Points for Beast Slay: ' + totalPoints4;
         }
 
         function calculateTotalPoints() {
+            // Call calculatePoints for each stage
+            calculatePoints();
+
             // Your total points calculation logic here
             var totalPoints = 0;
 
