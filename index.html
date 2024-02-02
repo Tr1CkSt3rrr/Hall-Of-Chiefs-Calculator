@@ -94,10 +94,10 @@
     <div class="section">
         <h2>Stage 1 - City Construction</h2>
 
-        <label for="constructionPower1">Power from Construction:</label>
+        <label for="constructionPower">Power from Construction:</label>
         <input type="number" id="constructionPower1">
 
-        <label for="researchPower1">Power from Research:</label>
+        <label for="researchPower">Power from Research:</label>
         <input type="number" id="researchPower1">
 
         <button onclick="calculatePoints()">Calculate Points</button>
@@ -194,8 +194,8 @@
             // Stage 1 calculation
             var constructionPower = parseFloat(document.getElementById('constructionPower1').value) || 0;
             var researchPower = parseFloat(document.getElementById('researchPower1').value) || 0;
-            var constructionPoints = constructionPower * 30;
-            var researchPoints = researchPower * 30;
+            var constructionPoints = constructionPower * 45;
+            var researchPoints = researchPower * 45;
             var totalPoints1 = constructionPoints + researchPoints;
 
             // Display the results for Stage 1
@@ -211,12 +211,10 @@
             var iron = parseFloat(document.getElementById('iron').value) || 0;
             var luckyWheelCount = parseFloat(document.getElementById('luckyWheelCount').value) || 0;
 
-            // Calculate points for gathering
-            var gatheringPoints = (Math.floor(meat / 50) * 3) + (Math.floor(wood / 50) * 3) + (Math.floor(coal / 10) * 3) + (Math.floor(iron / 2) * 3);
-
             var mythicPoints = mythicShards * 35000;
             var epicPoints = epicShards * 14000;
             var rarePoints = rareShards * 4000;
+            var gatheringPoints = Math.floor(meat / 50) * 3 + Math.floor(wood / 50) * 3 + Math.floor(coal / 10) * 3 + Math.floor(iron / 2) * 3;
             var luckyWheelPoints = luckyWheelCount * 90000;
 
             var totalPoints2 = mythicPoints + epicPoints + rarePoints + gatheringPoints + luckyWheelPoints;
@@ -251,11 +249,11 @@
             var chiefStamina = parseFloat(document.getElementById('chiefStamina').value) || 0;
             var staminaRestorations = parseFloat(document.getElementById('staminaRestorations').value) || 0;
 
-            // Calculate points for chief stamina
+            // Calculate Chief Stamina Points
             var chiefStaminaPoints = Math.floor(chiefStamina / 10) * 30000;
 
-            // Calculate points for chief stamina restorations
-            var restorationPoints = Math.floor(staminaRestorations / 10) * 30000;
+            // Calculate Chief Stamina Restorations Points
+            var restorationPoints = staminaRestorations * 30000;
 
             var totalPoints4 = chiefStaminaPoints + restorationPoints;
 
@@ -264,9 +262,6 @@
         }
 
         function calculateTotalPoints() {
-            // Call calculatePoints for each stage
-            calculatePoints();
-
             // Your total points calculation logic here
             var totalPoints = 0;
 
