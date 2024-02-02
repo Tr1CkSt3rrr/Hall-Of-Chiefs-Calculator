@@ -63,6 +63,14 @@
         .stageButton {
             background-color: #007BFF;
         }
+
+        .resultBox {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -81,7 +89,7 @@
     <button onclick="calculatePoints(1)">Calculate Points</button>
     <button class="stageButton" onclick="calculateStagePoints(1)">Calculate Stage Points</button>
 
-    <p id="result1"></p>
+    <div id="result1" class="resultBox"></div>
 
     <!-- Stage 2 - Hero Development -->
     <h2>Stage 2 - Hero Development</h2>
@@ -113,7 +121,7 @@
     <button onclick="calculatePoints(2)">Calculate Points</button>
     <button class="stageButton" onclick="calculateStagePoints(2)">Calculate Stage Points</button>
 
-    <p id="result2"></p>
+    <div id="result2" class="resultBox"></div>
 
     <!-- Stage 3 - Train Troops -->
     <h2>Stage 3 - Train Troops</h2>
@@ -138,7 +146,7 @@
     <button onclick="calculatePoints(3)">Calculate Points</button>
     <button class="stageButton" onclick="calculateStagePoints(3)">Calculate Stage Points</button>
 
-    <p id="result3"></p>
+    <div id="result3" class="resultBox"></div>
 
     <!-- Stage 4 - Beast Slay -->
     <h2>Stage 4 - Beast Slay</h2>
@@ -152,7 +160,7 @@
     <button onclick="calculatePoints(4)">Calculate Points</button>
     <button class="stageButton" onclick="calculateStagePoints(4)">Calculate Stage Points</button>
 
-    <p id="result4"></p>
+    <div id="result4" class="resultBox"></div>
 
     <!-- Total Points Button -->
     <button id="totalButton" onclick="calculateTotalPoints()">Calculate Total Points</button>
@@ -161,10 +169,10 @@
 
     <script>
         function calculatePoints(stage) {
-            // The existing calculatePoints function for individual stages remains unchanged
+            // Existing calculatePoints function remains unchanged
             // ...
 
-            // You can copy the existing code for the individual stages here
+            // Copy existing code for individual stages here
         }
 
         function calculateStagePoints(stage) {
@@ -173,23 +181,67 @@
             // Add up the points from the selected stage
             switch (stage) {
                 case 1:
-                    totalPoints += parseFloat(document.getElementById('result1').innerText.split(':')[1]) || 0;
+                    var constructionPower = parseFloat(document.getElementById('constructionPower1').value) || 0;
+                    var researchPower = parseFloat(document.getElementById('researchPower1').value) || 0;
+                    var troopPower = parseFloat(document.getElementById('troopPower1').value) || 0;
+
+                    var constructionPoints = constructionPower * 30;
+                    var researchPoints = researchPower * 30;
+                    var troopPoints = troopPower * 20;
+
+                    totalPoints = constructionPoints + researchPoints + troopPoints;
+
+                    document.getElementById('result1').innerHTML = 'Total Points for City Construction: ' + totalPoints;
+
                     break;
                 case 2:
-                    totalPoints += parseFloat(document.getElementById('result2').innerText.split(':')[1]) || 0;
+                    var mythicShards = parseFloat(document.getElementById('mythicShards').value) || 0;
+                    var epicShards = parseFloat(document.getElementById('epicShards').value) || 0;
+                    var rareShards = parseFloat(document.getElementById('rareShards').value) || 0;
+                    var meat = parseFloat(document.getElementById('meat').value) || 0;
+                    var wood = parseFloat(document.getElementById('wood').value) || 0;
+                    var coal = parseFloat(document.getElementById('coal').value) || 0;
+                    var iron = parseFloat(document.getElementById('iron').value) || 0;
+                    var luckyWheelCount = parseFloat(document.getElementById('luckyWheelCount').value) || 0;
+
+                    var mythicPoints = mythicShards * 35000;
+                    var epicPoints = epicShards * 14000;
+                    var rarePoints = rareShards * 4000;
+                    var gatheringPoints = (meat * 3) + (wood * 3) + (coal * 3) + (iron * 3);
+                    var luckyWheelPoints = luckyWheelCount * 90000;
+
+                    totalPoints = mythicPoints + epicPoints + rarePoints + gatheringPoints + luckyWheelPoints;
+
+                    document.getElementById('result2').innerHTML = 'Total Points for Hero Development: ' + totalPoints;
+
                     break;
                 case 3:
-                    totalPoints += parseFloat(document.getElementById('result3').innerText.split(':')[1]) || 0;
+                    var troopsTrained = parseFloat(document.getElementById('troopsTrained').value) || 0;
+                    var troopLevel = parseInt(document.getElementById('troopLevel').value) || 1;
+
+                    var levelPoints = [90, 120, 180, 265, 385, 595, 830, 1130, 1485, 1960];
+
+                    totalPoints = troopsTrained * levelPoints[troopLevel - 1];
+
+                    document.getElementById('result3').innerHTML = 'Total Points for Train Troops: ' + totalPoints;
+
                     break;
                 case 4:
-                    totalPoints += parseFloat(document.getElementById('result4').innerText.split(':')[1]) || 0;
+                    var totalStamina = parseFloat(document.getElementById('chiefStamina').value) || 0;
+                    var staminaRestorations = parseFloat(document.getElementById('staminaRestorations').value) || 0;
+
+                    var beastPoints = (totalStamina / 10) * 30000;
+                    var polarTerrorPoints = Math.floor(totalStamina / 25) * 90000;
+                    var additionalStaminaPoints = staminaRestorations * 100;
+
+                    totalPoints = beastPoints + polarTerrorPoints + additionalStaminaPoints;
+
+                    document.getElementById('result4').innerHTML = 'Total Points for Beast Slay: ' + totalPoints;
+
                     break;
                 default:
                     break;
             }
-
-            // Display the points for the selected stage
-            alert('Points for Stage ' + stage + ': ' + totalPoints);
         }
 
         function calculateTotalPoints() {
