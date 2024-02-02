@@ -100,7 +100,7 @@
         <label for="researchPower">Power from Research:</label>
         <input type="number" id="researchPower1">
 
-        <button onclick="calculatePoints()">Calculate Points</button>
+        <button onclick="calculatePoints('result1')">Calculate Points</button>
 
         <div id="result1" class="resultBox"></div>
     </div>
@@ -133,7 +133,7 @@
         <label for="luckyWheelCount">Play Lucky Wheel Time(s):</label>
         <input type="number" id="luckyWheelCount">
 
-        <button onclick="calculatePoints()">Calculate Points</button>
+        <button onclick="calculatePoints('result2')">Calculate Points</button>
 
         <div id="result2" class="resultBox"></div>
     </div>
@@ -158,7 +158,7 @@
             <option value="10">Level 10</option>
         </select>
 
-        <button onclick="calculatePoints()">Calculate Points</button>
+        <button onclick="calculatePoints('result3')">Calculate Points</button>
 
         <div id="result3" class="resultBox"></div>
     </div>
@@ -173,7 +173,7 @@
         <label for="staminaRestorations">Chief Stamina Restorations:</label>
         <input type="number" id="staminaRestorations">
 
-        <button onclick="calculatePoints()">Calculate Points</button>
+        <button onclick="calculatePoints('result4')">Calculate Points</button>
 
         <div id="result4" class="resultBox"></div>
     </div>
@@ -184,12 +184,9 @@
     <p id="totalResult"></p>
 
     <script>
-        function calculatePoints() {
+        function calculatePoints(resultId) {
             // Reset results
-            document.getElementById('result1').innerHTML = '';
-            document.getElementById('result2').innerHTML = '';
-            document.getElementById('result3').innerHTML = '';
-            document.getElementById('result4').innerHTML = '';
+            document.getElementById(resultId).innerHTML = '';
 
             // Stage 1 calculation
             var constructionPower = parseFloat(document.getElementById('constructionPower1').value) || 0;
@@ -199,66 +196,7 @@
             var totalPoints1 = constructionPoints + researchPoints;
 
             // Display the results for Stage 1
-            document.getElementById('result1').innerHTML = 'Total Points for City Construction: ' + totalPoints1;
-
-            // Stage 2 calculation
-            var mythicShards = parseFloat(document.getElementById('mythicShards').value) || 0;
-            var epicShards = parseFloat(document.getElementById('epicShards').value) || 0;
-            var rareShards = parseFloat(document.getElementById('rareShards').value) || 0;
-            var meat = parseFloat(document.getElementById('meat').value) || 0;
-            var wood = parseFloat(document.getElementById('wood').value) || 0;
-            var coal = parseFloat(document.getElementById('coal').value) || 0;
-            var iron = parseFloat(document.getElementById('iron').value) || 0;
-            var luckyWheelCount = parseFloat(document.getElementById('luckyWheelCount').value) || 0;
-
-            var mythicPoints = mythicShards * 35000;
-            var epicPoints = epicShards * 14000;
-            var rarePoints = rareShards * 4000;
-            var gatheringPoints = Math.floor(meat / 50) * 3 + Math.floor(wood / 50) * 3 + Math.floor(coal / 10) * 3 + Math.floor(iron / 2) * 3;
-            var luckyWheelPoints = luckyWheelCount * 90000;
-
-            var totalPoints2 = mythicPoints + epicPoints + rarePoints + gatheringPoints + luckyWheelPoints;
-
-            // Display the results for Stage 2
-            document.getElementById('result2').innerHTML = 'Total Points for Hero Development: ' + totalPoints2;
-
-            // Stage 3 calculation
-            var troopsTrained = parseFloat(document.getElementById('troopsTrained').value) || 0;
-            var troopLevel = parseFloat(document.getElementById('troopLevel').value) || 1;
-            var troopPoints = 0;
-
-            switch (troopLevel) {
-                case 1: troopPoints = troopsTrained * 90; break;
-                case 2: troopPoints = troopsTrained * 120; break;
-                case 3: troopPoints = troopsTrained * 180; break;
-                case 4: troopPoints = troopsTrained * 265; break;
-                case 5: troopPoints = troopsTrained * 385; break;
-                case 6: troopPoints = troopsTrained * 595; break;
-                case 7: troopPoints = troopsTrained * 830; break;
-                case 8: troopPoints = troopsTrained * 1130; break;
-                case 9: troopPoints = troopsTrained * 1485; break;
-                case 10: troopPoints = troopsTrained * 1960; break;
-            }
-
-            var totalPoints3 = troopPoints;
-
-            // Display the results for Stage 3
-            document.getElementById('result3').innerHTML = 'Total Points for Train Troops: ' + totalPoints3;
-
-            // Stage 4 calculation
-            var chiefStamina = parseFloat(document.getElementById('chiefStamina').value) || 0;
-            var staminaRestorations = parseFloat(document.getElementById('staminaRestorations').value) || 0;
-
-            // Calculate Chief Stamina Points
-            var chiefStaminaPoints = Math.floor(chiefStamina / 10) * 30000;
-
-            // Calculate Chief Stamina Restorations Points
-            var restorationPoints = staminaRestorations * 30000;
-
-            var totalPoints4 = chiefStaminaPoints + restorationPoints;
-
-            // Display the results for Stage 4
-            document.getElementById('result4').innerHTML = 'Total Points for Beast Slay: ' + totalPoints4;
+            document.getElementById(resultId).innerHTML = 'Total Points for City Construction: ' + totalPoints1;
         }
 
         function calculateTotalPoints() {
