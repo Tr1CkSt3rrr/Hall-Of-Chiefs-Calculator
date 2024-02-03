@@ -15,11 +15,10 @@
         }
 
         h1 {
-            color: #ff6347;
-            border: 2px solid #ff6347;
-            border-radius: 8px;
-            padding: 10px;
-            margin-bottom: 20px;
+            color: #ff6600; /* Updated title color */
+            border: 2px solid #ff6600; /* Added border to the title */
+            padding: 10px; /* Added padding to the title */
+            display: inline-block; /* Ensures the border wraps around the text */
         }
 
         h2 {
@@ -55,7 +54,7 @@
         }
 
         button {
-            background-color: #6c757d;
+            background-color: #dc3545; /* Updated button color */
             color: white;
             padding: 15px;
             margin-top: 15px;
@@ -66,7 +65,7 @@
         }
 
         button:hover {
-            background-color: #495057;
+            background-color: #c82333; /* Updated button hover color */
         }
 
         p {
@@ -346,7 +345,7 @@
 
             // Stage 5 calculation
             var heroGearEssence = parseFloat(document.getElementById('heroGearEssence').value) || 0;
-            widgetHeroGear = parseFloat(document.getElementById('widgetHeroGear').value) || 0;
+            var widgetHeroGear = parseFloat(document.getElementById('widgetHeroGear').value) || 0;
             var powerConstruction5 = parseFloat(document.getElementById('powerConstruction5').value) || 0;
             var powerResearch5 = parseFloat(document.getElementById('powerResearch5').value) || 0;
             var powerTroops5 = parseFloat(document.getElementById('powerTroops5').value) || 0;
