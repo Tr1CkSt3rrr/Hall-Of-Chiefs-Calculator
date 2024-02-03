@@ -13,11 +13,11 @@
         }
 
         h1 {
-            color: #3498db; /* Title color */
+            color: #333;
         }
 
         h2 {
-            color: #2ecc71; /* Stage name color */
+            color: #555;
             margin-bottom: 15px;
         }
 
@@ -27,7 +27,7 @@
             padding: 20px;
             border: 1px solid #ddd;
             border-radius: 8px;
-            background-color: #ecf0f1; /* Background color for each section */
+            background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: left;
         }
@@ -35,7 +35,7 @@
         label {
             display: block;
             margin: 10px 0;
-            color: #3498db; /* Label color */
+            color: #777;
         }
 
         input, select {
@@ -43,12 +43,12 @@
             padding: 10px;
             margin: 5px 0;
             box-sizing: border-box;
-            border: 1px solid #3498db; /* Input box border color */
+            border: 1px solid #ccc;
             border-radius: 4px;
         }
 
         button {
-            background-color: #2ecc71; /* Button background color */
+            background-color: #4caf50;
             color: white;
             padding: 15px;
             margin-top: 15px;
@@ -59,7 +59,7 @@
         }
 
         button:hover {
-            background-color: #27ae60; /* Button hover color */
+            background-color: #45a049;
         }
 
         p {
@@ -70,18 +70,18 @@
         }
 
         #totalButton {
-            background-color: #3498db; /* Total button background color */
+            background-color: #007bff;
             margin-top: 30px;
         }
 
         #totalButton:hover {
-            background-color: #2980b9; /* Total button hover color */
+            background-color: #0056b3;
         }
 
         #totalResult {
             font-size: 20px;
             font-weight: bold;
-            color: #3498db; /* Total result color */
+            color: #007bff;
             margin-top: 20px;
         }
     </style>
@@ -92,7 +92,7 @@
 
     <!-- Stage 1 - City Construction -->
     <div class="section">
-        <h2 style="color: #e74c3c;">Stage 1 - City Construction</h2>
+        <h2>Stage 1 - City Construction</h2>
 
         <label for="constructionPower">Power from Construction:</label>
         <input type="number" id="constructionPower1">
@@ -107,7 +107,7 @@
 
     <!-- Stage 2 - Hero Development -->
     <div class="section">
-        <h2 style="color: #e67e22;">Stage 2 - Hero Development</h2>
+        <h2>Stage 2 - Hero Development</h2>
 
         <label for="mythicShards">Mythic Hero Shards:</label>
         <input type="number" id="mythicShards">
@@ -140,7 +140,7 @@
 
     <!-- Stage 3 - Train Troops -->
     <div class="section">
-        <h2 style="color: #f39c12;">Stage 3 - Train Troops</h2>
+        <h2>Stage 3 - Train Troops</h2>
 
         <label for="troopsTrained">Troops Trained:</label>
         <input type="number" id="troopsTrained">
@@ -165,21 +165,21 @@
 
     <!-- Stage 4 - Gather Resources -->
     <div class="section">
-        <h2 style="color: #9b59b6;">Stage 4 - Gather Resources</h2>
+        <h2>Stage 4 - Gather Resources</h2>
 
-        <label for="meat">Gathered Meat:</label>
+        <label for="meatGathered">Gathered Meat:</label>
         <input type="number" id="meatGathered">
 
-        <label for="wood">Gathered Wood:</label>
+        <label for="woodGathered">Gathered Wood:</label>
         <input type="number" id="woodGathered">
 
-        <label for="coal">Gathered Coal:</label>
+        <label for="coalGathered">Gathered Coal:</label>
         <input type="number" id="coalGathered">
 
-        <label for="iron">Gathered Iron:</label>
+        <label for="ironGathered">Gathered Iron:</label>
         <input type="number" id="ironGathered">
 
-        <label for="researchPower">Power from Research:</label>
+        <label for="researchPower4">Power from Research:</label>
         <input type="number" id="researchPower4">
 
         <button onclick="calculatePoints()">Calculate Points</button>
@@ -189,7 +189,7 @@
 
     <!-- Stage 5 - Power Boost -->
     <div class="section">
-        <h2 style="color: #3498db;">Stage 5 - Power Boost</h2>
+        <h2>Stage 5 - Power Boost</h2>
 
         <label for="heroGearEssence">Hero Gear Essence Stone:</label>
         <input type="number" id="heroGearEssence">
@@ -203,12 +203,33 @@
         <label for="powerResearch">Power through Research:</label>
         <input type="number" id="powerResearch">
 
-        <label for="powerTroopTraining">Power through Training/Promoting Troops:</label>
-        <input type="number" id="powerTroopTraining">
+        <label for="powerTroops">Power through Training/Promoting Troops:</label>
+        <input type="number" id="powerTroops">
 
         <button onclick="calculatePoints()">Calculate Points</button>
 
         <div id="result5" class="resultBox"></div>
+    </div>
+
+    <!-- Stage 6 - Chief Gear Upgrade -->
+    <div class="section">
+        <h2>Stage 6 - Chief Gear Upgrade</h2>
+
+        <label for="chiefGearUpgrade">Raise Max Chief Gear Score by 1:</label>
+        <input type="number" id="chiefGearUpgrade">
+
+        <label for="powerConstruction6">Power through Construction:</label>
+        <input type="number" id="powerConstruction6">
+
+        <label for="powerResearch6">Power through Research:</label>
+        <input type="number" id="powerResearch6">
+
+        <label for="powerTroops6">Power through Training/Promoting Troops:</label>
+        <input type="number" id="powerTroops6">
+
+        <button onclick="calculatePoints()">Calculate Points</button>
+
+        <div id="result6" class="resultBox"></div>
     </div>
 
     <!-- Total Points Button -->
@@ -224,13 +245,14 @@
             document.getElementById('result3').innerHTML = '';
             document.getElementById('result4').innerHTML = '';
             document.getElementById('result5').innerHTML = '';
+            document.getElementById('result6').innerHTML = '';
 
             // Stage 1 calculation
-            var constructionPower = parseFloat(document.getElementById('constructionPower1').value) || 0;
-            var researchPower = parseFloat(document.getElementById('researchPower1').value) || 0;
-            var constructionPoints = constructionPower * 45;
-            var researchPoints = researchPower * 45;
-            var totalPoints1 = constructionPoints + researchPoints;
+            var constructionPower1 = parseFloat(document.getElementById('constructionPower1').value) || 0;
+            var researchPower1 = parseFloat(document.getElementById('researchPower1').value) || 0;
+            var constructionPoints1 = constructionPower1 * 45;
+            var researchPoints1 = researchPower1 * 45;
+            var totalPoints1 = constructionPoints1 + researchPoints1;
 
             // Display the results for Stage 1
             document.getElementById('result1').innerHTML = 'Total Points for City Construction: ' + totalPoints1;
@@ -284,10 +306,11 @@
             var woodGathered = parseFloat(document.getElementById('woodGathered').value) || 0;
             var coalGathered = parseFloat(document.getElementById('coalGathered').value) || 0;
             var ironGathered = parseFloat(document.getElementById('ironGathered').value) || 0;
-            var researchPower = parseFloat(document.getElementById('researchPower4').value) || 0;
+            var researchPower4 = parseFloat(document.getElementById('researchPower4').value) || 0;
 
             var gatheringPoints4 = Math.floor(meatGathered / 50) * 3 + Math.floor(woodGathered / 50) * 3 + Math.floor(coalGathered / 10) * 3 + Math.floor(ironGathered / 2) * 3;
-            var researchPoints4 = researchPower * 45;
+            var researchPoints4 = researchPower4 * 45;
+
             var totalPoints4 = gatheringPoints4 + researchPoints4;
 
             // Display the results for Stage 4
@@ -298,18 +321,26 @@
             var widgetHeroGear = parseFloat(document.getElementById('widgetHeroGear').value) || 0;
             var powerConstruction = parseFloat(document.getElementById('powerConstruction').value) || 0;
             var powerResearch = parseFloat(document.getElementById('powerResearch').value) || 0;
-            var powerTroopTraining = parseFloat(document.getElementById('powerTroopTraining').value) || 0;
+            var powerTroops = parseFloat(document.getElementById('powerTroops').value) || 0;
 
-            var totalPoints5 = heroGearEssence * 50000 + widgetHeroGear * 100000 + powerConstruction * 30 + powerResearch * 30 + powerTroopTraining * 20;
+            var totalPoints5 = heroGearEssence * 50000 + widgetHeroGear * 100000 + powerConstruction * 30 + powerResearch * 30 + powerTroops * 20;
 
             // Display the results for Stage 5
             document.getElementById('result5').innerHTML = 'Total Points for Power Boost: ' + totalPoints5;
+
+            // Stage 6 calculation
+            var chiefGearUpgrade = parseFloat(document.getElementById('chiefGearUpgrade').value) || 0;
+            var powerConstruction6 = parseFloat(document.getElementById('powerConstruction6').value) || 0;
+            var powerResearch6 = parseFloat(document.getElementById('powerResearch6').value) || 0;
+            var powerTroops6 = parseFloat(document.getElementById('powerTroops6').value) || 0;
+
+            var totalPoints6 = chiefGearUpgrade * 500 + powerConstruction6 * 30 + powerResearch6 * 30 + powerTroops6 * 20;
+
+            // Display the results for Stage 6
+            document.getElementById('result6').innerHTML = 'Total Points for Chief Gear Upgrade: ' + totalPoints6;
         }
 
         function calculateTotalPoints() {
-            // Calculate points for each stage
-            calculatePoints();
-
             // Your total points calculation logic here
             var totalPoints = 0;
 
@@ -319,6 +350,7 @@
             totalPoints += parseFloat(document.getElementById('result3').innerText.split(':')[1]) || 0;
             totalPoints += parseFloat(document.getElementById('result4').innerText.split(':')[1]) || 0;
             totalPoints += parseFloat(document.getElementById('result5').innerText.split(':')[1]) || 0;
+            totalPoints += parseFloat(document.getElementById('result6').innerText.split(':')[1]) || 0;
 
             // Display the total points
             document.getElementById('totalResult').innerText = 'Total Points: ' + totalPoints;
