@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,14 +11,15 @@
             background-color: #f5f5f5;
             text-align: center;
             margin: 20px;
-        }
-
-        h1 {
             color: #333;
         }
 
+        h1 {
+            color: #007bff;
+        }
+
         h2 {
-            color: #555;
+            color: #28a745;
             margin-bottom: 15px;
         }
 
@@ -25,7 +27,7 @@
             margin: 20px auto;
             max-width: 600px;
             padding: 20px;
-            border: 1px solid #ddd;
+            border: 2px solid #17a2b8;
             border-radius: 8px;
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -35,20 +37,21 @@
         label {
             display: block;
             margin: 10px 0;
-            color: #777;
+            color: #495057;
         }
 
-        input, select {
+        input,
+        select {
             width: calc(100% - 20px);
             padding: 10px;
             margin: 5px 0;
             box-sizing: border-box;
-            border: 1px solid #ccc;
+            border: 1px solid #ced4da;
             border-radius: 4px;
         }
 
         button {
-            background-color: #4caf50;
+            background-color: #28a745;
             color: white;
             padding: 15px;
             margin-top: 15px;
@@ -59,7 +62,7 @@
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #218838;
         }
 
         p {
@@ -86,6 +89,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <h1>Hall of Chiefs Calculator</h1>
@@ -94,10 +98,10 @@
     <div class="section">
         <h2>Stage 1 - City Construction</h2>
 
-        <label for="constructionPower">Power from Construction:</label>
+        <label for="constructionPower1">Power from Construction:</label>
         <input type="number" id="constructionPower1">
 
-        <label for="researchPower">Power from Research:</label>
+        <label for="researchPower1">Power from Research:</label>
         <input type="number" id="researchPower1">
 
         <button onclick="calculatePoints()">Calculate Points</button>
@@ -179,7 +183,7 @@
         <label for="ironGathered">Gathered Iron:</label>
         <input type="number" id="ironGathered">
 
-        <label for="researchPower4">Power from Research:</label>
+        <label for="researchPower4">Power through Research:</label>
         <input type="number" id="researchPower4">
 
         <button onclick="calculatePoints()">Calculate Points</button>
@@ -191,20 +195,20 @@
     <div class="section">
         <h2>Stage 5 - Power Boost</h2>
 
-        <label for="heroGearEssence">Hero Gear Essence Stone:</label>
+        <label for="heroGearEssence">Hero Gear Essence Stones:</label>
         <input type="number" id="heroGearEssence">
 
         <label for="widgetHeroGear">Widget Hero Exclusive Gear:</label>
         <input type="number" id="widgetHeroGear">
 
-        <label for="powerConstruction">Power through Construction:</label>
-        <input type="number" id="powerConstruction">
+        <label for="powerConstruction5">Power through Construction:</label>
+        <input type="number" id="powerConstruction5">
 
-        <label for="powerResearch">Power through Research:</label>
-        <input type="number" id="powerResearch">
+        <label for="powerResearch5">Power through Research:</label>
+        <input type="number" id="powerResearch5">
 
-        <label for="powerTroops">Power through Training/Promoting Troops:</label>
-        <input type="number" id="powerTroops">
+        <label for="powerTroops5">Power through Training/Promoting Troops:</label>
+        <input type="number" id="powerTroops5">
 
         <button onclick="calculatePoints()">Calculate Points</button>
 
@@ -248,11 +252,11 @@
             document.getElementById('result6').innerHTML = '';
 
             // Stage 1 calculation
-            var constructionPower1 = parseFloat(document.getElementById('constructionPower1').value) || 0;
-            var researchPower1 = parseFloat(document.getElementById('researchPower1').value) || 0;
-            var constructionPoints1 = constructionPower1 * 45;
-            var researchPoints1 = researchPower1 * 45;
-            var totalPoints1 = constructionPoints1 + researchPoints1;
+            var constructionPower = parseFloat(document.getElementById('constructionPower1').value) || 0;
+            var researchPower = parseFloat(document.getElementById('researchPower1').value) || 0;
+            var constructionPoints = constructionPower * 45;
+            var researchPoints = researchPower * 45;
+            var totalPoints1 = constructionPoints + researchPoints;
 
             // Display the results for Stage 1
             document.getElementById('result1').innerHTML = 'Total Points for City Construction: ' + totalPoints1;
@@ -284,16 +288,36 @@
             var troopPoints = 0;
 
             switch (troopLevel) {
-                case 1: troopPoints = troopsTrained * 90; break;
-                case 2: troopPoints = troopsTrained * 120; break;
-                case 3: troopPoints = troopsTrained * 180; break;
-                case 4: troopPoints = troopsTrained * 265; break;
-                case 5: troopPoints = troopsTrained * 385; break;
-                case 6: troopPoints = troopsTrained * 595; break;
-                case 7: troopPoints = troopsTrained * 830; break;
-                case 8: troopPoints = troopsTrained * 1130; break;
-                case 9: troopPoints = troopsTrained * 1485; break;
-                case 10: troopPoints = troopsTrained * 1960; break;
+                case 1:
+                    troopPoints = troopsTrained * 90;
+                    break;
+                case 2:
+                    troopPoints = troopsTrained * 120;
+                    break;
+                case 3:
+                    troopPoints = troopsTrained * 180;
+                    break;
+                case 4:
+                    troopPoints = troopsTrained * 265;
+                    break;
+                case 5:
+                    troopPoints = troopsTrained * 385;
+                    break;
+                case 6:
+                    troopPoints = troopsTrained * 595;
+                    break;
+                case 7:
+                    troopPoints = troopsTrained * 830;
+                    break;
+                case 8:
+                    troopPoints = troopsTrained * 1130;
+                    break;
+                case 9:
+                    troopPoints = troopsTrained * 1485;
+                    break;
+                case 10:
+                    troopPoints = troopsTrained * 1960;
+                    break;
             }
 
             var totalPoints3 = troopPoints;
@@ -319,11 +343,11 @@
             // Stage 5 calculation
             var heroGearEssence = parseFloat(document.getElementById('heroGearEssence').value) || 0;
             var widgetHeroGear = parseFloat(document.getElementById('widgetHeroGear').value) || 0;
-            var powerConstruction = parseFloat(document.getElementById('powerConstruction').value) || 0;
-            var powerResearch = parseFloat(document.getElementById('powerResearch').value) || 0;
-            var powerTroops = parseFloat(document.getElementById('powerTroops').value) || 0;
+            var powerConstruction5 = parseFloat(document.getElementById('powerConstruction5').value) || 0;
+            var powerResearch5 = parseFloat(document.getElementById('powerResearch5').value) || 0;
+            var powerTroops5 = parseFloat(document.getElementById('powerTroops5').value) || 0;
 
-            var totalPoints5 = heroGearEssence * 50000 + widgetHeroGear * 100000 + powerConstruction * 30 + powerResearch * 30 + powerTroops * 20;
+            var totalPoints5 = heroGearEssence * 50000 + widgetHeroGear * 100000 + powerConstruction5 * 30 + powerResearch5 * 30 + powerTroops5 * 20;
 
             // Display the results for Stage 5
             document.getElementById('result5').innerHTML = 'Total Points for Power Boost: ' + totalPoints5;
@@ -358,4 +382,5 @@
     </script>
 
 </body>
+
 </html>
