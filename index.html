@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,15 +10,14 @@
             background-color: #f5f5f5;
             text-align: center;
             margin: 20px;
-            color: #333;
         }
 
         h1 {
-            color: #007bff;
+            color: #333;
         }
 
         h2 {
-            color: #28a745;
+            color: #555;
             margin-bottom: 15px;
         }
 
@@ -27,7 +25,7 @@
             margin: 20px auto;
             max-width: 600px;
             padding: 20px;
-            border: 2px solid #17a2b8;
+            border: 1px solid #ddd;
             border-radius: 8px;
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -37,21 +35,20 @@
         label {
             display: block;
             margin: 10px 0;
-            color: #495057;
+            color: #777;
         }
 
-        input,
-        select {
+        input, select {
             width: calc(100% - 20px);
             padding: 10px;
             margin: 5px 0;
             box-sizing: border-box;
-            border: 1px solid #ced4da;
+            border: 1px solid #ccc;
             border-radius: 4px;
         }
 
         button {
-            background-color: #28a745;
+            background-color: #4caf50;
             color: white;
             padding: 15px;
             margin-top: 15px;
@@ -62,7 +59,7 @@
         }
 
         button:hover {
-            background-color: #218838;
+            background-color: #45a049;
         }
 
         p {
@@ -89,7 +86,6 @@
         }
     </style>
 </head>
-
 <body>
 
     <h1>Hall of Chiefs Calculator</h1>
@@ -98,10 +94,10 @@
     <div class="section">
         <h2>Stage 1 - City Construction</h2>
 
-        <label for="constructionPower1">Power from Construction:</label>
+        <label for="constructionPower">Power from Construction:</label>
         <input type="number" id="constructionPower1">
 
-        <label for="researchPower1">Power from Research:</label>
+        <label for="researchPower">Power from Research:</label>
         <input type="number" id="researchPower1">
 
         <button onclick="calculatePoints()">Calculate Points</button>
@@ -183,7 +179,7 @@
         <label for="ironGathered">Gathered Iron:</label>
         <input type="number" id="ironGathered">
 
-        <label for="researchPower4">Power through Research:</label>
+        <label for="researchPower4">Power from Research:</label>
         <input type="number" id="researchPower4">
 
         <button onclick="calculatePoints()">Calculate Points</button>
@@ -195,7 +191,7 @@
     <div class="section">
         <h2>Stage 5 - Power Boost</h2>
 
-        <label for="heroGearEssence">Hero Gear Essence Stones:</label>
+        <label for="heroGearEssence">Hero Gear Essence Stone:</label>
         <input type="number" id="heroGearEssence">
 
         <label for="widgetHeroGear">Widget Hero Exclusive Gear:</label>
@@ -288,36 +284,16 @@
             var troopPoints = 0;
 
             switch (troopLevel) {
-                case 1:
-                    troopPoints = troopsTrained * 90;
-                    break;
-                case 2:
-                    troopPoints = troopsTrained * 120;
-                    break;
-                case 3:
-                    troopPoints = troopsTrained * 180;
-                    break;
-                case 4:
-                    troopPoints = troopsTrained * 265;
-                    break;
-                case 5:
-                    troopPoints = troopsTrained * 385;
-                    break;
-                case 6:
-                    troopPoints = troopsTrained * 595;
-                    break;
-                case 7:
-                    troopPoints = troopsTrained * 830;
-                    break;
-                case 8:
-                    troopPoints = troopsTrained * 1130;
-                    break;
-                case 9:
-                    troopPoints = troopsTrained * 1485;
-                    break;
-                case 10:
-                    troopPoints = troopsTrained * 1960;
-                    break;
+                case 1: troopPoints = troopsTrained * 90; break;
+                case 2: troopPoints = troopsTrained * 120; break;
+                case 3: troopPoints = troopsTrained * 180; break;
+                case 4: troopPoints = troopsTrained * 265; break;
+                case 5: troopPoints = troopsTrained * 385; break;
+                case 6: troopPoints = troopsTrained * 595; break;
+                case 7: troopPoints = troopsTrained * 830; break;
+                case 8: troopPoints = troopsTrained * 1130; break;
+                case 9: troopPoints = troopsTrained * 1485; break;
+                case 10: troopPoints = troopsTrained * 1960; break;
             }
 
             var totalPoints3 = troopPoints;
@@ -382,5 +358,4 @@
     </script>
 
 </body>
-
 </html>
