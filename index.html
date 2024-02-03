@@ -15,7 +15,11 @@
         }
 
         h1 {
-            color: #007bff;
+            color: #ff6347;
+            border: 2px solid #ff6347;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 20px;
         }
 
         h2 {
@@ -51,7 +55,7 @@
         }
 
         button {
-            background-color: #28a745;
+            background-color: #6c757d;
             color: white;
             padding: 15px;
             margin-top: 15px;
@@ -62,7 +66,7 @@
         }
 
         button:hover {
-            background-color: #218838;
+            background-color: #495057;
         }
 
         p {
@@ -86,23 +90,6 @@
             font-weight: bold;
             color: #007bff;
             margin-top: 20px;
-        }
-
-        /* Color variations */
-        h1, h2, button {
-            color: #007bff;
-        }
-
-        h2:nth-of-type(2n), label, input, select {
-            background-color: #e2f0d9;
-        }
-
-        h2:nth-of-type(2n + 1) {
-            background-color: #d0e9c6;
-        }
-
-        .resultBox {
-            background-color: #f8d7da;
         }
     </style>
 </head>
@@ -359,7 +346,7 @@
 
             // Stage 5 calculation
             var heroGearEssence = parseFloat(document.getElementById('heroGearEssence').value) || 0;
-            var widgetHeroGear = parseFloat(document.getElementById('widgetHeroGear').value) || 0;
+            widgetHeroGear = parseFloat(document.getElementById('widgetHeroGear').value) || 0;
             var powerConstruction5 = parseFloat(document.getElementById('powerConstruction5').value) || 0;
             var powerResearch5 = parseFloat(document.getElementById('powerResearch5').value) || 0;
             var powerTroops5 = parseFloat(document.getElementById('powerTroops5').value) || 0;
@@ -382,9 +369,6 @@
         }
 
         function calculateTotalPoints() {
-            // Calculate points for all stages
-            calculatePoints();
-
             // Your total points calculation logic here
             var totalPoints = 0;
 
